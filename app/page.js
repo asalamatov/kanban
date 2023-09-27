@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 
 // static metadata
-export const metadata = {
-  title: 'Home',
-};
+// export const metadata = {
+//   title: 'Home',
+// };
 /**
  *Output
  * <head>
@@ -14,10 +14,10 @@ export const metadata = {
  */
 
 // dynamic metadata
-export async function generateMetadata({ params, searchParams }) {
-  const product = await getProduct(params.id);
-  return {title: product.title}
-}
+// export async function generateMetadata({ params, searchParams }) {
+//   const product = await getProduct(params.id);
+//   return {title: product.title}
+// }
 
 export default function Home() {
   return (

@@ -1,9 +1,9 @@
-import React from 'react'
+'use client';
+
+import React from 'react';
 
 const layout = () => {
-  return (
-    <div>Navigate to Top</div>
-  )
-}
+  return <div>Navigate to Top</div>;
+};
 
-export default layout
+export default layout;

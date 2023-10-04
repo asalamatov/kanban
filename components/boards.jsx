@@ -2,9 +2,21 @@
 
 import { useState } from "react";
 
-const boards_list = [
-  'tak1', 'tak2', 'tak3', 'task4', '+ Create New Board'
-]
+import dbdata from "@utils/dbdata";
+import Columns from "./columns";
+import Header from "./header";
+
+var boards_db = dbdata.boards
+const boards_list = []
+for (var board of boards_db) {
+  boards_list.push(board.name)
+}
+
+boards_list.push('+ Create New Board');
+
+// const boards_list = [
+//   'tak1', 'tak2', 'tak3', 'task4', '+ Create New Board'
+// ]
 
 const BoardItem = ({ boardName, isBoardSelected }) => {
   const styleOfSelected = isBoardSelected
@@ -21,12 +33,12 @@ const BoardItem = ({ boardName, isBoardSelected }) => {
 
 const Boards = () => {
   const [activeBoard, setActiveBoard] = useState(boards_list[0]);
-  // const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   const styleOfSelected = (boardName) =>
     boardName == activeBoard
-      ? 'align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 bg-yellow-300 text-black'
-      : 'align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 hover:bg-yellow-100';
+      ? 'align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 bg-indigo-600 text-gray-100 hover:bg-indigo-100 hover:text-indigo-600'
+      : 'align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 hover:bg-indigo-100 hover:text-indigo-600';
 
   // const styleOfBoardHidden = (hidden) => {
   //   hidden
@@ -35,10 +47,10 @@ const Boards = () => {
   // }
 
   return (
-    <div className='fixed w-60 h-full bg-white flex flex-col flex-wrap justify-start' hidden={true} >
+    <div className='fixed w-60 h-full flex flex-col flex-wrap justify-start' hidden={true} >
       <div
         id="logo"
-        className="h-20 flex justify-start px-5 bg-yellow-300 w-full items-center font-bold text-4xl"
+        className="h-20 flex justify-start px-5 w-full items-center font-bold text-4xl text-gray-100 bg-indigo-600 rounded-br-[2rem]"
       >
         <h1>❖ kanban</h1>
       </div>
@@ -90,6 +102,8 @@ const Boards = () => {
           👀 Hide Sidebar
         </button>
       </div>
+      <Columns activeBoard={activeBoard} />
+      <Header activeBoard={activeBoard} />
     </div>
   );
 }

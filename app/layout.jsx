@@ -1,6 +1,7 @@
 import '@styles/globals.css'
 
 import Boards from '@components/boards';
+import Columns from '@components/columns';
 
 export const metadata = {
   title: 'Kanban Desk',
@@ -16,6 +17,7 @@ const RootLayout = ({children}) => {
         </div>
         <main className="">
           <Boards />
+          <Columns />
           {children}
         </main>
       </body>

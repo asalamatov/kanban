@@ -1,10 +1,11 @@
 
 
+
+
 const Home = () => {
   return (
     <>
       <boards />
-      hellow
     </>
   );
 };

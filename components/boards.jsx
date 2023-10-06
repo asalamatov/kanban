@@ -47,14 +47,9 @@ const Boards = () => {
   // }
 
   return (
-    <div className='fixed w-60 h-full flex flex-col flex-wrap justify-start' hidden={true} >
-      <div
-        id="logo"
-        className="h-20 flex justify-start px-5 w-full items-center font-bold text-4xl text-gray-100 bg-indigo-600 rounded-br-[2rem]"
-      >
-        <h1>❖ kanban</h1>
-      </div>
-      <div className="text-slate-400 h-10 w-[45]">
+    <div className='fixed w-[261px] top-20 h-full flex flex-col flex-wrap justify-start' hidden={true} >
+
+      <div className="text-slate-400 h-10 w-[261px]">
         <h2 className="my-7 mx-5">All Boards ({boards_list.length - 1})</h2>
         <div className="flex flex-col">
           {boards_list.map(

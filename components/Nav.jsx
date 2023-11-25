@@ -8,6 +8,7 @@ import logo from "@/assets/logo-mobile.svg";
 
 import ElipsisMenu from './ElipsisMenu';
 import DeleteModal from '@app/modals/DeleteModal';
+import AddEditTaskModal from '@app/modals/AddEditTaskModal';
 import HeaderDropdown from './HeaderDropdown';
 
 import Image from "next/image";
@@ -78,6 +79,7 @@ const Nav = ({activeBoard}) => {
             />
           )}
         </div>
+        {session?.user ? (
         <button
           className={`add-task-btn heading-M`} //</header> ${board.columns.length === 0 && "btn-off"}`}
           onClick={() => {
@@ -92,6 +94,35 @@ const Nav = ({activeBoard}) => {
             <img src={addTaskMobile} alt="add task" />
           )}
         </button>
+        ) : (
+        <div>
+        {/* <button
+          className={`add-task-btn heading-M`} //</header> ${board.columns.length === 0 && "btn-off"}`}
+          onClick={() => {
+            setIsTaskModalOpen(true);
+            setIsElipsisMenuOpen(false);
+          }}
+          // disabled={board.columns.length === 0}
+        >
+          {isBigScreen ? (
+            "Sign In"
+          ) : (
+            <img src={addTaskMobile} alt="add task" />
+          )}
+              </button> */}
+
+              {providers && Object.values(providers).map((provider) => (
+              <button
+                type="button"
+                key={provider.name}
+                onClick={() => signIn(provider.id)}
+                className={`add-task-btn heading-M`}
+              >
+                Sign In
+              </button>
+            ))}
+              </div>
+        )}
         <Image
           src={elipsis}
           className='elipsis'

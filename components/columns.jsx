@@ -3,7 +3,7 @@
 import React from 'react'
 
 import dbdata from '@utils/dbdata';
-import useGlobal from '@core/global';
+// import useGlobal from '@core/global';
 
 
 

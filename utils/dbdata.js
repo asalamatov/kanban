@@ -102,7 +102,7 @@ export default {
           cards: [
             {
               _id: 0,
-              name: 'Plan Product Hunt Launch',
+              name: 'Plan Roadmap',
               done: 0,
             },
             {

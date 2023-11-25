@@ -1,7 +1,12 @@
 import '@styles/globals.css'
 
-import Boards from '@components/boards';
-import Columns from '@components/columns';
+import Nav from '@components/Nav';
+import Boards from '@components/Boards';
+import Columns from '@components/Columns';
+import Provider from '@components/Provider';
+import '@styles/index.css';
+import '@styles/Typography.css';
+
 
 export const metadata = {
   title: 'Kanban Desk',
@@ -12,14 +17,14 @@ const RootLayout = ({children}) => {
   return (
     <html lang='en'>
       <body>
-        <div className="main">
-          <div className='gradient'/>
-        </div>
-        <main className="">
-          <Boards />
-          <Columns />
-          {children}
-        </main>
+        <Provider>
+          <main>
+            <Nav />
+            <Boards />
+            <Columns />
+            {children}
+            </main>
+          </Provider>
       </body>
     </html>
   )

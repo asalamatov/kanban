@@ -1,11 +1,10 @@
 
-
-
+// import Boards from "@components/boards";
 
 const Home = () => {
   return (
     <>
-      <boards />
+      {/* <Boards /> */}
     </>
   );
 };

@@ -3,6 +3,7 @@
 import React from 'react'
 
 import dbdata from '@utils/dbdata';
+import useGlobal from '@core/global';
 
 
 
@@ -48,7 +49,7 @@ const Columns = (props) => {
                 <h1 className="text-xl px-1">{column.name} ({column.cards.length})</h1>
                 {column.cards.map((card) => {
                   return (
-                    <div className="p-5 bg-white my-3 rounded-xl text-black border border-slate-100 shadow-lg" key={card._id}>
+                    <div className="p-5 select-text my-3 rounded-xl text-black border border-slate-100 shadow-lg" key={card._id}>
                       <h1 className="text-black font-bold p-2" style={{userSelect: 'text'}}>{card.name}</h1>
                     </div>
                   );

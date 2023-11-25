@@ -1,10 +1,34 @@
 'use client'
 
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 import dbdata from "@utils/dbdata";
-import Columns from "./columns";
-import Header from "./header";
+import Columns from "./Columns";
+import Nav from "./Nav";
+
+/*
+if (
+                      boardName ===
+                      boards_list.at(boards_list.length - 1)
+                    ) {
+                      var new_board_name = prompt('New Board Name: ', 'Board No: ');
+                      setNewBoardName(new_board_name);
+                      console.log(new_board_name);
+                      if (newBoardName !== '') {
+                        var create_new_board_text = boards_list.pop();
+                        boards_list.push(new_board_name);
+                        boards_list.push(create_new_board_text);
+                        console.log("I AM HERE")
+                        setActiveBoard(new_board_name);
+                        createTable();
+
+                      } else {
+                        setActiveBoard(prev_board);
+                      }
+*/
+
+import { useSession } from "next-auth/react";
+import { set } from "mongoose";
 
 var boards_db = dbdata.boards
 const boards_list = []
@@ -33,7 +57,43 @@ const BoardItem = ({ boardName, isBoardSelected }) => {
 
 const Boards = () => {
   const [activeBoard, setActiveBoard] = useState(boards_list[0]);
+  const [newBoardName, setNewBoardName] = useState('example');
   const [hidden, setHidden] = useState(false);
+  const { data: session } = useSession();
+
+  const createTable = async (e) => {
+    e.preventDefault();
+    console.log('creating new board');
+    var new_board_name = prompt('New Board Name: ', 'Board No: ');
+    setNewBoardName(new_board_name);
+    console.log(new_board_name);
+    if (newBoardName !== '') {
+      var create_new_board_text = boards_list.pop();
+      boards_list.push(new_board_name);
+      boards_list.push(create_new_board_text);
+      console.log("I AM HERE")
+      setActiveBoard(new_board_name);
+      createTable();
+
+    } else {
+      setActiveBoard(prev_board);
+    }
+    try {
+      const response = await fetch('/api/boards/new', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: newBoardName,
+          userId: session?.user.id,
+        }),
+      });
+
+      if (response.ok) {
+        console.log('new board created');
+      }
+    } catch (error) {
+       console.log("ERROR Creating New Board");
+    }
+  }
 
   const styleOfSelected = (boardName) =>
     boardName == activeBoard
@@ -61,44 +121,32 @@ const Boards = () => {
                   onClick={() => {
                     var prev_board = activeBoard;
                     setActiveBoard(boardName);
-                    if (
-                      boardName ===
-                      boards_list.at(boards_list.length - 1)
-                    ) {
-                      var new_board_name = prompt(
-                        'New Board Name: ',
-                        'Board No: '
-                      );
-                      if (new_board_name) {
-                        var create_new_board_text = boards_list.pop();
-                        boards_list.push(new_board_name);
-                        boards_list.push(create_new_board_text);
-                        setActiveBoard(new_board_name);
-                      } else {
-                        setActiveBoard(prev_board);
-                      }
-
                     }
-                  }}
+                  }
                   className={styleOfSelected(boardName)}
                 >
                   ⌘&nbsp;&nbsp;&nbsp;{boardName}
-                </button>
+                  </button>
               );
             }
           )}
         </div>
+        <button className="fixed bottom-20 align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 bg-black"
+        >
+          New Board
+        </button>
         <button
           className="fixed bottom-6 align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 bg-black"
           onClick={(prev) => {
             setHidden(!prev);
           }}
+          // onClick={() => { createTable()}}
         >
-          👀 Hide Sidebar
+          Hide Sidebar
         </button>
       </div>
       <Columns activeBoard={activeBoard} />
-      <Header activeBoard={activeBoard} />
+      {/* <Nav activeBoard={activeBoard} /> */}
     </div>
   );
 }

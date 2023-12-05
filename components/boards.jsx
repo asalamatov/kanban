@@ -61,39 +61,39 @@ const Boards = () => {
   const [hidden, setHidden] = useState(false);
   const { data: session } = useSession();
 
-  const createTable = async (e) => {
-    e.preventDefault();
-    console.log('creating new board');
-    var new_board_name = prompt('New Board Name: ', 'Board No: ');
-    setNewBoardName(new_board_name);
-    console.log(new_board_name);
-    if (newBoardName !== '') {
-      var create_new_board_text = boards_list.pop();
-      boards_list.push(new_board_name);
-      boards_list.push(create_new_board_text);
-      console.log("I AM HERE")
-      setActiveBoard(new_board_name);
-      createTable();
+  // const createTable = async () => {
+  //   // e.preventDefault();
+  //   console.log('creating new board');
+  //   var new_board_name = prompt('New Board Name: ', 'Board No: ');
+  //   setNewBoardName(new_board_name);
+  //   console.log(new_board_name);
+  //   if (newBoardName !== '') {
+  //     var create_new_board_text = boards_list.pop();
+  //     boards_list.push(new_board_name);
+  //     boards_list.push(create_new_board_text);
+  //     console.log("I AM HERE")
+  //     setActiveBoard(new_board_name);
+  //     createTable();
 
-    } else {
-      setActiveBoard(prev_board);
-    }
-    try {
-      const response = await fetch('/api/boards/new', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: newBoardName,
-          userId: session?.user.id,
-        }),
-      });
+  //   } else {
+  //     setActiveBoard(prev_board);
+  //   }
+  //   try {
+  //     const response = await fetch('/api/boards/new', {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         name: newBoardName,
+  //         userId: session?.user.id,
+  //       }),
+  //     });
 
-      if (response.ok) {
-        console.log('new board created');
-      }
-    } catch (error) {
-       console.log("ERROR Creating New Board");
-    }
-  }
+  //     if (response.ok) {
+  //       console.log('new board created');
+  //     }
+  //   } catch (error) {
+  //      console.log("ERROR Creating New Board");
+  //   }
+  // }
 
   const styleOfSelected = (boardName) =>
     boardName == activeBoard
@@ -132,6 +132,7 @@ const Boards = () => {
           )}
         </div>
         <button className="fixed bottom-20 align-middle py-4 px-5 mr-2 text-left rounded-r-[3rem] truncate w-52 bg-black"
+          // onClick={()=>{createTable()}}
         >
           New Board
         </button>

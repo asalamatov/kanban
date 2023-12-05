@@ -14,7 +14,7 @@ export const POST = async (req) => {
     await newBoard.save();
     return new Response(JSON.stringify(newBoard), { status: 201 })
   } catch (error) {
-    console.log('Error creating prompt: ', error.message);
+    console.log('Error creating board: ', error.message);
     return new Response(JSON.stringify(error.message), {status: 500});
   }
 };

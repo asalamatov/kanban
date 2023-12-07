@@ -25,8 +25,8 @@ export const boardsSlice = createSlice({
     editBoard: (state, action) => {
       const payload = action.payload;
       const board = state.find((board) => board.isActive);
-      board.name = payload.name;
-      board.columns = payload.newColumns;
+      board?.name = payload.name;
+      board?.columns = payload.newColumns;
     },
     deleteBoard: (state) => {
       const board = state.find((board) => board.isActive);

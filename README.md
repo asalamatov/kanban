@@ -1,11 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  Kanban task management web app
 
-# Day 1 of NextJS: Result: Sept27
-<img src='ui_v1.png' width=800px>
+## Table of contents
 
-## Getting Started
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [Built with](#built-with)
+ - [Installation](#installation)
+- [Author](#author)
 
-First, run the development server:
+
+
+
+## Overview
+
+### The challenge
+
+This is a full stack solution to the kanban challenge on [frontendmentor](https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB) (they provide the design, figma file and assets and the goal is to produce an app)
+
+Users are able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, read, update, and delete boards, columns, tasks and subtasks
+- Receive form validations when trying to create/edit boards and tasks
+- Mark subtasks as complete and move tasks between columns
+- Hide/show the board sidebar
+- Toggle the theme between light/dark modes
+- Drag and drop tasks to change their status and re-order them in a column
+
+### Screenshot
+
+![](/Overview.gif)
+
+### Links
+
+- Live Site URL: [Vercel]()
+
+## Built with
+- [React](https://react.dev/) - JS library
+- [Redux](https://redux.js.org/) - Client-Side State Management Tool
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwindcss](https://tailwindcss.com) - CSS framework
+- [NextAuth.js](https://next-auth.js.org/) - Authentication library for Next.js
+
+## Installation
+
+First, install all required dependencies:
+
+```
+npm install
+```
+
+Create a `.env` file inside the `/` folder having the following structure:
+
+```.env
+MONGODB_URI=
+
+NEXTAUTH_SECRET=
+# run '$ openssl rand -base64 32' in the terminal
+NEXTAUTH_URL = http://localhost:3000
+# or the link to your website
+
+# Next Auth Google Provider
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
+If you want to remove or add auth providers, you have to modify the following files : `/app/api/auth/[...nextauth]/route.js`.
+
+## Running
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -19,21 +85,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Author
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Website - [Azamat Salamatov](https://www.azamat.life)

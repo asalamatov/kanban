@@ -1,6 +1,6 @@
 'use client'
 import React, {useState, useEffect} from 'react'
-import SideBar from './Sidebar';
+import SideBar from './SideBar';
 import { useSelector } from 'react-redux';
 import Column from './Column';
 import EmptyBoard from './EmptyBoard';

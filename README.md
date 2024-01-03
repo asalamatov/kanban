@@ -10,7 +10,7 @@
  - [Installation](#installation)
 - [Author](#author)
 
-
+![demo screen](./sshot.png)
 
 
 ## Overview
